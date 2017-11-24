@@ -12110,7 +12110,7 @@ Standard deviation of prices: $165,171.13
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: This model has successfully captured the variation of the target variable. R2 score, as described above, ranges from 0 to 1, the closest to 1 being the better, i.e., meaning the model is free from error. 0.923 is the R2 score for the model above and it means it correctly predicts 92.3% of the time given our data.</p>
+<p>**Answer: This model has successfully captured the variation of the target variable. R2 score, as described above, ranges from 0 to 1, the closest to 1 being the better, i.e., meaning the model is adherent to the data. 0.923 is the R2 score for the model above and the closest it is to 1, the best it predicts the data used in the regression.</p>
 
 </div>
 </div>
@@ -13278,8 +13278,10 @@ Think about the pros and cons of adding more training points based on if the tra
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: At max_depth=3 we have the best model. Both the Training and the Testing score are converging to 0.8, without much discrepancy. This points at a good model. This occurs as we increase the number of training points. Convergence begins to be obvious at around 250 points. The score on the training curve begins to stabilize as we add more points, meaning we stop being able to increase our accuracy without changing our parameters even if we add more data. 
-More data is always good, and it would benefit the model, but not if we fix our analysis on one of these graphs alone, that is, on a fixed max_depth, for instance. Perhaps more data would mean a new model, with a new value for max_depth would yield a better R2 score than our max_depth=3.</p>
+<p>Answer: At max_depth=3 we have the best model (comparing the 4 instances above). Both the Training and the Testing score are converging to 0.8, without much discrepancy. This points at a good model, where performance at training and test sets are similar, guaranteeing they don't under or overfit the data. This occurs as we increase the number of training points. Convergence begins to be obvious at around 250 points. The score on the training curve begins to stabilize as we add more points.</p>
+<p>For the training curve, initially, when we have few points, the score is high because we can fit this data easily. As the number of training points increases, the R2 score lowers slightly until it stabilizes at around 0.8, this occurs because the regression model has achieved its limits, given its parameters, of fitting to the data.</p>
+<p>For the testing curve, the score is low because, with few training points, the model fits a line that does not generalize well for the data. The score very quickly spikes up due as we increase the number of data points, meaning it begins to properly fit the data.</p>
+<p>Both lines converge, as said before, at around 250-300 points and this means, as we have studied before, that this model, among the other 3 graphs, is the best one, given its R2 score is both high and enough for the training and test curves.</p>
 
 </div>
 </div>
@@ -13762,7 +13764,7 @@ YXdPiHYcIi1BPT0REQkM9fRERCQw1NMTEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHA
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: On a max_depth of 1 the model suffers from high bias. On a max_depth of 10 the model suffers from high variance. The visual cues for this are the space between the two curves. High bias as in underfitting means we don't generalize well enough to provide good predictions and this impacts both the training and the validation score. High variance means we trained too much our model's parameters on training data so that when any data point outside of this set is fed to our model, it misses. This is shown at the right-most part of the graph, by the distance between both curves.</p>
+<p>**Answer: On a max_depth of 1 the model suffers from high bias. On a max_depth of 10 the model suffers from high variance. The visual cues for this are the space between the two curves and the R2 score. High bias as in underfitting means we don't generalize well enough to provide good predictions and this impacts both the training and the validation score, yielding low R2 score for both curves. High variance means we trained too much our model's parameters on training data so that when any data point outside of this set is fed to our model, it misses. This is shown at the right-most part of the graph, by the distance between both curves, meaning the training set performs well (0.9 R2 score) and the validation set performs bad (0.7) as we increase the depth.</p>
 
 </div>
 </div>
@@ -13784,7 +13786,7 @@ YXdPiHYcIi1BPT0REQkM9fRERCQw1NMTEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHA
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: max_depth=3 is our chosen model. It provides a R2 score between 0.7 and 0.8 for both our training and validation datasets and is unrivaled for any other combination in our analysis.</p>
+<p>**Answer: max_depth at 3 or 4 is to be our chosen model. It provides a maximal R2 score between 0.7 and 0.8 for both our training and validation datasets and is unrivaled for any other combination in our analysis.</p>
 
 </div>
 </div>
@@ -13816,7 +13818,7 @@ YXdPiHYcIi1BPT0REQkM9fRERCQw1NMTEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHA
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: The grid search technique is used to find the best combination of parameters for a given machine learning algorithm for a given problem. It is used to generate different combinations of different parameters and, thus, allow the their iterative testing. The grid entails both parameters and values for a given technique, generating all of its combinations. An example of one such parameter could be the gamma hyperparameter for the Support Vector Machine technique and one possible value could be 100.</p>
+<p>**Answer: The grid search technique is used to find the best combination of parameters for a given machine learning algorithm for a given problem. It is used to generate different combinations of different parameters and, thus, allow their iterative testing. The grid entails both parameters and values for a given technique, generating all of its combinations. An example of one such parameter could be the gamma hyperparameter for the Support Vector Machine technique and one possible value could be 100.</p>
 
 </div>
 </div>
@@ -13841,7 +13843,7 @@ YXdPiHYcIi1BPT0REQkM9fRERCQw1NMTEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHAUNITEZHA
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: K-Fold is a technique for generating training and test sets. It works by splitting our dataset into K-1 training subsets and 1 rotating test subset. The main drawback for grid search is the re-usage of the same training set for all different parameters and its weakness to overfitting given the lack of variance on the data. K-Fold solves that by always changing the test split around, always randomizing our test set.</p>
+<p>**Answer: K-Fold is a technique for generating training and test sets. It works by splitting our dataset into K-1 training subsets and 1 rotating test subset. The main drawback for grid search is the re-usage of the same training set for all different parameters and its weakness to overfitting given the lack of variance on the data. K-Fold solves that by always changing the test split around, setting the usage of a different test subset. So for each run needed by Grid Search, we can use a different Fold (i.e., combination of k-1 training subsets and 1 test subset)</p>
 
 </div>
 </div>
@@ -13980,7 +13982,7 @@ For the <code>fit_model</code> function in the code cell below, you will need to
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Hint: </strong> The answer comes from the output of the code snipped above.</p>
-<p>**Answer: 4</p>
+<p>**Answer: 4. This result is in accordance to what we have analyzed in question 6, where we find out that we maximize the R2 score for both the training and test curves at 3 or 4 max_depth.</p>
 
 </div>
 </div>
@@ -14073,10 +14075,10 @@ Predicted selling price for Client 3&#39;s home: $896,962.50
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>**Answer: From the model: Predicted selling price for Client 1's home: $401,008.70
-Predicted selling price for Client 2's home: $235,091.38
-Predicted selling price for Client 3's home: $896,962.50</p>
-<p>These prices could be added a buffer for negotiation of perhaps 5 to 10 percent. The final, discounted value for the selling operation could be around the predicted values for each house. The values seem reasonable and the reasons exposed in the Hint are enough. It is also worth noting that these values are within our min and max values and well inside our standard deviation from the min and max values.</p>
+<p>Answer: From the model: Predicted selling price for Client 1's home: 401,008.70
+Predicted selling price for Client 2's home: 235,091.38
+Predicted selling price for Client 3's home: 896,962.50</p>
+<p>Regarding the total number of rooms, the analysis made before is in agreement to the predictions, that is: the more rooms, the bigger the price. The other way around for the poverty level, as it impacts very negatively on Client 2. The effect of the student-teacher ratio is, as well as the poverty level, also inversely proportional do the predicted price. For Client 2, a low predicted price is to be expected since the student-teacher ratio is higher, compared to Clients 1 and 3 and the poverty level is also, much higher. For client 3, the very low poverty level coupled with the lowest student-teacher ratio and 8 rooms (double of Client 2 and 3 more than Client 1) also is in agreement to our previous analysis.</p>
 
 </div>
 </div>
